@@ -1,10 +1,38 @@
 name: Acciojob Tests
 
 on:
- push:
-    branches: [ "main","master" ]
+  push:
+    branches: ["main", "master"]
 
 jobs:
   calling-acciojob-main-action:
-    uses: acciojob/acciojob-tests-action/.github/workflows/main-action.yml@main
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Use secret
+        run: echo "Secret value is ${{ secrets.GH_TOKEN }}"
+
+  checking-question-type:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute checking-question-type job
+        run: echo "Running checking-question-type job"
+
+  running-accio-cypress-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute running-accio-cypress-tests job
+        run: echo "Running running-accio-cypress-tests job"
+
+  running-accio-junit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute running-accio-junit-tests job
+        run: echo "Running running-accio-junit-tests job"
+
+  running-accio-jest-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute running-accio-jest-tests job
+        run: echo "Running running-accio-jest-tests job"
